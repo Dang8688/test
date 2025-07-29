@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>M là thằng ngu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a0000);
+      color: #ff4f81;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .login-box, .content-box {
+      width: 92%;
+      max-width: 420px;
+      margin: 12vh auto 0;
+      padding: 24px;
+      background: rgba(30, 0, 0, 0.9);
+      border: 2px solid #ff4f81;
+      border-radius: 16px;
+      box-shadow: 0 0 18px #ff0040aa;
+      -webkit-box-shadow: 0 0 18px #ff0040aa;
+      text-align: center;
+      transition: opacity 0.6s ease;
+      -webkit-transition: opacity 0.6s ease;
+    }
+
+    h1, h2 {
+      color: #ff4f81;
+      margin-bottom: 16px;
+      text-shadow: 0 0 10px #ff0040;
+      -webkit-text-shadow: 0 0 10px #ff0040;
+      font-size: 2rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 14px 0;
+      border: 2px solid #ff4f81;
+      border-radius: 8px;
+      background: #000;
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-shadow: 0 0 5px #000;
+      box-shadow: 0 0 10px #ff4b2b88;
+      -webkit-box-shadow: 0 0 10px #ff4b2b88;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+      box-shadow: 0 0 15px #ff4b2b;
+      -webkit-box-shadow: 0 0 15px #ff4b2b;
+    }
+
+    .message {
+      color: #ff6161;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    #home {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      -webkit-transition: opacity 0.8s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1 !important;
+      animation: appear 1s ease forwards;
+      -webkit-animation: appear 1s ease forwards;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @-webkit-keyframes appear {
+      from {
+        opacity: 0;
+        -webkit-transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        -webkit-transform: translateY(0) scale(1);
+      }
+    }
+
+    .fade-text {
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      -webkit-animation: fadeIn 2s ease forwards;
+      animation-delay: 0.6s;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ffc0cb;
+      text-shadow: 0 0 8px #ff4f81aa;
+      -webkit-text-shadow: 0 0 8px #ff4f81aa;
+      white-space: pre-line;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1, h2 {
+        font-size: 1.6rem;
+      }
+
+      input, button {
+        font-size: 1rem;
+      }
+
+      .fade-text {
+        font-size: 1rem;
+        padding: 0 4px;
+      }
+
+      .login-box, .content-box {
+        margin-top: 10vh;
+        padding: 20px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      h1, h2 {
+        font-size: 2.4rem;
+      }
+
+      .fade-text {
+        font-size: 1.2rem;
+      }
+
+      input, button {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nhạc nền -->
+  <audio id="doomMusic" preload="auto" playsinline>
+    <source src="https://www.dropbox.com/scl/fi/3v4bktk2lfvoe5bbd82y2/The-Only-Thing-They-Fear-Is-You.mp3?rlkey=xe5a1cxt7vw2gr50zz8cc8w57&raw=1" type="audio/mp3">
+    Trình duyệt không hỗ trợ âm thanh.
+  </audio>
+
+  <div class="login-box" id="login">
+    <h2>🔥🔥 CHO THẰNG NGU NHÀ MÀY ĐẤY🔥🔥</h2>
+    <input type="password" id="password" placeholder="Ai LÀ BỐ CỦA M">
+    <button onclick="login()">Mở khóa</button>
+    <p class="message" id="message"></p>
+  </div>
+
+  <div class="content-box" id="home">
+    <h1>🔥🔥 NGU 🔥🔥</h1>
+    <p class="fade-text">
+      Get fucked
+    </p>
+  </div>
+
+  <script>
+    function login() {
+      const password = document.getElementById("password").value;
+      const audio = document.getElementById("doomMusic");
+      const loginBox = document.getElementById("login");
+      const homePage = document.getElementById("home");
+
+      if (password === "TRAN HAI DANG") {
+        audio.volume = 0.6;
+        audio.play().catch(e => {
+          console.log("Autoplay bị chặn:", e);
+        });
+
+        loginBox.classList.add("fade-out");
+
+        setTimeout(() => {
+          loginBox.style.display = "none";
+          homePage.style.display = "block";
+          homePage.classList.add("fade-in");
+        }, 600);
+      } else {
+        document.getElementById("message").innerText = "🔥 HỌ VÀ TÊN BỐ MÀY FULL CAPSLOCK";
+      }
+    }
+  </script>
+
+</body>
+</html>
